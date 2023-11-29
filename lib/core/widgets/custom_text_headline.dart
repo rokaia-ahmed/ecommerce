@@ -6,7 +6,7 @@ class CustomTextHeadLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Sign up',
+      title,
       style:Theme.of(context).textTheme.headlineLarge ,
     );
   }

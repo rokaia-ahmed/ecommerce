@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/router/router.dart';
+import 'package:ecommerce_app/screens/Auth/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
@@ -66,13 +68,18 @@ class SignupScreen extends StatelessWidget {
                 ),
                 CustomDefaultButton(
                   text: 'SIGN UP',
-                  onTap: () {  },),
+                  onTap: () {
+                    MagicRouter.navigateTo(SignInScreen());
+                  },),
                 const SizedBox(
                   height: 20,
                 ),
-                const Text('By creating an account, you agree to our Terms of Service and Privacy Policy',
+                 Text('By creating an account, you agree to our Terms of Service and Privacy Policy',
                 textAlign: TextAlign.center,
-                style:TextStyle(fontSize: 14) ,
+                style:Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ) ,
                 ),
               ],
             ),
