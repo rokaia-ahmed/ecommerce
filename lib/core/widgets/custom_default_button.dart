@@ -4,27 +4,47 @@ import '../utilites/colors.dart';
 class CustomDefaultButton extends StatelessWidget {
    const CustomDefaultButton({super.key,
      required this.text,
-     required this.onTap});
+     required this.onTap, this.width});
   final String text ;
+  final double? width ;
   final Function() onTap ;
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed:onTap,
-      minWidth:double.infinity ,
-      color: AppColors.primaryColor,
-      height: 50,
-      shape: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
-        borderSide: const BorderSide(
-          width: 0,
-          color: Colors.transparent,
+    return InkWell(
+      onTap:onTap ,
+      child: Container(
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(10),
+        decoration:BoxDecoration(
+          color: AppColors.primaryColor ,
+          borderRadius: BorderRadius.circular(20),
+        ) ,
+        width:width ?? double.infinity,
+        height: 50,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Spacer(
+              flex: 1,
+            ),
+            Text(text,
+              textAlign: TextAlign.center,
+              style:Theme.of(context).textTheme.labelMedium,
+            ),
+           const Spacer(
+             flex: 1,
+           ),
+            const CircleAvatar(
+              radius: 15,
+              backgroundColor: Colors.white,
+              child: Icon(Icons.arrow_forward_ios_outlined,
+                color:AppColors.primaryColor ,
+                size: 17,
+              ),
+            ),
+          ],
         ),
       ),
-      child:Text(text,
-        style:Theme.of(context).textTheme.labelMedium,
-      ) ,
-
     );
   }
 }

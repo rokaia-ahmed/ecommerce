@@ -5,28 +5,28 @@ import 'colors.dart';
 class AppTheme{
 
  static ThemeData lightTheme =ThemeData(
-    textTheme: const TextTheme(
-      headlineLarge:TextStyle(
-        color: AppColors.primaryColor,
+    textTheme:  TextTheme(
+      headlineLarge:const TextStyle(
+        color: AppColors.textColor,
         fontWeight: FontWeight.w600,
-        fontSize: 20,
+        fontSize: 30,
       ) ,
-      headlineMedium:TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-        fontSize: 17,
+      headlineMedium:const TextStyle(
+        color: AppColors.textColor,
+        fontWeight: FontWeight.normal,
+        fontSize: 15,
       ),
       headlineSmall: TextStyle(
         color: AppColors.lightGreyColor,
-        fontWeight: FontWeight.w400,
-        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        fontSize: 12,
       ),
-      bodyMedium:TextStyle(
+      bodyMedium:const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       ) ,
-      labelMedium:TextStyle(color: Colors.white,
+      labelMedium:const TextStyle(color: Colors.white,
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ) ,
