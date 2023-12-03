@@ -1,0 +1,24 @@
+{
+  "ads": [
+    {
+      "id": 1,
+      "title": "or all your summer clothing needs",
+      "imagePath" : "https://iv1.lisimg.com/image/2914092/441full-kelly..jpg"
+    },
+    {
+      "id": 2,
+      "title": "For all your summer clothing needs",
+      "imagePath" : "https://ilarge.lisimg.com/image/1963742/784full-kurara-chibana.jpg"
+    },
+    {
+      "id": 3,
+      "title": "For all your summer clothing needs",
+      "imagePath" : "https://th.bing.com/th/id/OIP.oyEcUStvvmk3bpRG7K7siwHaKW?w=740&h=1034&rs=1&pid=ImgDetMain"
+    },
+    {
+      "id": 4,
+      "title": "For all your summer clothing needs",
+      "imagePath" : "https://iv1.lisimg.com/image/1892272/740full-shiho.jpg"
+    }
+  ]
+}

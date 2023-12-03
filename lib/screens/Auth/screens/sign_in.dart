@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/router/router.dart';
 import 'package:ecommerce_app/core/utilites/colors.dart';
 import 'package:ecommerce_app/screens/Auth/screens/sign_up.dart';
+import 'package:ecommerce_app/screens/Home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
@@ -77,7 +78,9 @@ class SignInScreen extends StatelessWidget {
                 ),
                 CustomDefaultButton(
                   text: 'LOG IN',
-                  onTap: () {  },),
+                  onTap: () {
+                    MagicRouter.navigateTo(const HomeScreen());
+                  },),
                 const SizedBox(
                   height: 20,
                 ),
