@@ -5,6 +5,7 @@ import 'colors.dart';
 class AppTheme{
 
  static ThemeData lightTheme =ThemeData(
+  // useMaterial3: false,
     textTheme:  TextTheme(
       headlineLarge:const TextStyle(
         color: AppColors.textColor,

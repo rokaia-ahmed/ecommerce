@@ -39,7 +39,6 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
               height: 200,
               width: double.infinity,
               padding:const EdgeInsets.all(10) ,
-              margin:const EdgeInsets.symmetric(horizontal: 15) ,
               decoration: BoxDecoration(
                 color:color[index],
                 borderRadius: BorderRadius.circular(10),
