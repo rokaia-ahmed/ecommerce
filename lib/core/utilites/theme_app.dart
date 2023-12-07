@@ -5,7 +5,8 @@ import 'colors.dart';
 class AppTheme{
 
  static ThemeData lightTheme =ThemeData(
-  // useMaterial3: false,
+     //useMaterial3: false,
+
     textTheme:  TextTheme(
       headlineLarge:const TextStyle(
         color: AppColors.textColor,
@@ -23,7 +24,7 @@ class AppTheme{
         fontSize: 12,
       ),
       bodyMedium:const TextStyle(
-        color: Colors.black,
+        color: AppColors.textColor,
         fontWeight: FontWeight.w500,
         fontSize: 16,
       ) ,

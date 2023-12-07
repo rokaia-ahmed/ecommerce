@@ -52,10 +52,20 @@ class CustomDefaultButton extends StatelessWidget {
 class CustomSmallButton extends StatelessWidget {
   const CustomSmallButton({super.key,
     required this.text,
-    this.width, required this.onTap});
+    this.width, required this.onTap,
+    this.height, this.backgroundColor,
+    this.backgroundIcon, this.colorIcon,
+    this.textColor, this.icon});
+
   final String text ;
   final double? width ;
+  final double? height ;
   final Function() onTap ;
+  final Color? backgroundColor ;
+  final Color? backgroundIcon ;
+  final Color? colorIcon ;
+  final Color? textColor ;
+  final IconData? icon ;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -64,11 +74,11 @@ class CustomSmallButton extends StatelessWidget {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(10),
         decoration:BoxDecoration(
-          color:Colors.white ,
+          color:backgroundColor?? Colors.white ,
           borderRadius: BorderRadius.circular(20),
         ) ,
         width:width ?? double.infinity,
-        height: 40,
+        height:height ?? 50,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -76,15 +86,19 @@ class CustomSmallButton extends StatelessWidget {
               textAlign: TextAlign.center,
               style:Theme.of(context).textTheme.headlineSmall
                   ?.copyWith(
-                fontSize: 13,
+                fontSize: 14,
+                color:textColor ,
+                fontWeight: FontWeight.bold
               ),
             ),
             const Spacer(),
-            const CircleAvatar(
+             CircleAvatar(
               radius: 15,
-              backgroundColor: AppColors.primaryColor,
-              child: Icon(Icons.arrow_forward_ios_outlined,
-                color:Colors.white ,
+              backgroundColor:backgroundIcon??
+                  AppColors.primaryColor,
+              child: Icon(
+                icon ?? Icons.arrow_forward_ios_outlined,
+                color:colorIcon??Colors.white ,
                 size: 13,
               ),
             ),

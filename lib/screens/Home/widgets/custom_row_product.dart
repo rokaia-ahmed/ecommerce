@@ -1,4 +1,7 @@
+import 'package:ecommerce_app/core/router/router.dart';
 import 'package:flutter/material.dart';
+
+import '../../product_details/screens/product_details.dart';
 
 class CustomRowProduct extends StatelessWidget {
   const CustomRowProduct({super.key});
@@ -11,7 +14,11 @@ class CustomRowProduct extends StatelessWidget {
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context,index)=>
-          const BuildItem(),
+           BuildItem(
+             onTap: () {
+               MagicRouter.navigateTo(const ProductDetails());
+             },
+           ),
           separatorBuilder: (context,index)=>
           const SizedBox(
             width: 10,
@@ -22,37 +29,39 @@ class CustomRowProduct extends StatelessWidget {
 }
 
 class BuildItem extends StatelessWidget {
-  const BuildItem({super.key});
-
+  const BuildItem({super.key, required this.onTap});
+ final  Function() onTap ;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration:BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-      ) ,
-      child:  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network('https://th.bing.com/th/id/R.51be98a51200ca64f0bb28d17120fdd9?rik=dD97el2%2fTEO3pA&pid=ImgRaw&r=0',
-          height: 80,
-          width: 80,
-            fit:BoxFit.contain ,
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text('Ankle Boots',
-            style:Theme.of(context).textTheme.headlineSmall
-                ?.copyWith(
-              fontSize: 16,
+    return InkWell(
+      onTap:onTap ,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration:BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+        ) ,
+        child:  Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network('https://modone.com/eng_pm_Mens-plain-t-shirt-S970-blue-8855_3.jpg',
+            height: 80,
+            width: 80,
+              fit:BoxFit.contain ,
             ),
-          ),
-          Text('\$49.99',
-          style:Theme.of(context).textTheme.headlineSmall,
-          ),
-        ],
+            const SizedBox(
+              height: 5,
+            ),
+            Text('Ankle Boots',
+              style:Theme.of(context).textTheme.headlineMedium
+            ),
+            Text('\$49.99',
+            style:Theme.of(context).textTheme.headlineMedium  ?.copyWith(
+               fontSize: 12,
+            ),
+            ),
+          ],
+        ),
       ),
     );
   }

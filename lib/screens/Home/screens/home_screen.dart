@@ -8,31 +8,29 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-     body:SafeArea(
-       child: Padding(
-         padding: EdgeInsets.all(10.0),
-         child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             CustomTextHeadLine(title: 'Categories',),
-             SizedBox(
-               height: 10,
-             ),
-             CustomRowCategory(),
-             CustomTextHeadLine(title: 'Latest',),
-             SizedBox(
-               height: 10,
-             ),
-             CustomCarouselSlider(),
-             SizedBox(
-               height: 10,
-             ),
-             CustomRowProduct(),
-           ],
-         ),
-       ),
-     ) ,
+    return const SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTextHeadLine(title: 'Categories',),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRowCategory(),
+            CustomTextHeadLine(title: 'Latest',),
+            SizedBox(
+              height: 10,
+            ),
+            CustomCarouselSlider(),
+            SizedBox(
+              height: 10,
+            ),
+            CustomRowProduct(),
+          ],
+        ),
+      ),
     );
   }
 }

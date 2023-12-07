@@ -1,11 +1,11 @@
 import 'package:ecommerce_app/core/router/router.dart';
 import 'package:ecommerce_app/core/utilites/colors.dart';
 import 'package:ecommerce_app/screens/Auth/screens/sign_up.dart';
-import 'package:ecommerce_app/screens/Home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../core/widgets/custom_text_headline.dart';
+import '../../layout/screen/layout.dart';
 import 'forget_password.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -79,7 +79,7 @@ class SignInScreen extends StatelessWidget {
                 CustomDefaultButton(
                   text: 'LOG IN',
                   onTap: () {
-                    MagicRouter.navigateTo(const HomeScreen());
+                    MagicRouter.navigateAndPReplacement(const LayoutScreen());
                   },),
                 const SizedBox(
                   height: 20,

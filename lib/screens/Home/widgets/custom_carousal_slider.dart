@@ -58,7 +58,8 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                         const SizedBox(height: 10),
                         CustomSmallButton(
                           text: 'SEE MORE',
-                          width:115 ,
+                          height: 43,
+                          width:130 ,
                           onTap: () {},
                         ),
                       ],
