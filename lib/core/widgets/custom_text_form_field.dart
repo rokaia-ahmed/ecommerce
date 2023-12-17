@@ -5,13 +5,14 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({super.key,
     required this.controller,
     this.onSubmitted, this.validator, this.fillColor,
-    this.prefixIcon, this.hintText, this.labelText});
+    this.prefixIcon, this.hintText, this.labelText, this.obscureText});
 
   final TextEditingController controller;
   final Color? fillColor;
   final String? hintText;
   final String? labelText;
   final Widget? prefixIcon;
+  final bool? obscureText;
   final Function(String)? onSubmitted;
   final String? Function(String?)? validator;
   @override
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       controller:controller ,
       cursorColor: Colors.black,
+      obscureText:obscureText??false ,
       onFieldSubmitted:onSubmitted ,
       validator: validator,
       style:Theme.of(context).textTheme.headlineMedium ,
