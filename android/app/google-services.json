@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1028323504062",
+    "project_id": "ecommerce-course-50d27",
+    "storage_bucket": "ecommerce-course-50d27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028323504062:android:5deb2e126dc689247513ef",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2d4Ds2DjX6KuyqpJB2U32EX4CkYsLJvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
