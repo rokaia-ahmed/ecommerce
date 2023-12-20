@@ -1,11 +1,14 @@
 import 'package:ecommerce_app/core/router/router.dart';
+import 'package:ecommerce_app/core/utilites/validation.dart';
 import 'package:ecommerce_app/screens/Auth/screens/sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../core/widgets/custom_text_headline.dart';
 import '../../../providers/auth_provider.dart';
+import '../widgets/password_Icon.dart';
 
 class SignupScreen extends StatefulWidget {
    const SignupScreen({super.key});
@@ -21,8 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
   }
   @override
   void dispose() {
-    Provider.of<AppAuthProvider>(context,listen: false
-    ).providerDispose();
+    Provider.of<AppAuthProvider>(context,listen: false).providerDispose();
     super.dispose();
   }
   @override
@@ -57,6 +59,14 @@ class _SignupScreenState extends State<SignupScreen> {
                             controller:appAuthProvider.emailController ,
                             labelText: 'EMAIL',
                             prefixIcon:const Icon(Icons.email_outlined) ,
+                            validator:(value){
+                              if(value!.isEmpty){
+                                return 'email is required';
+                              }else if(!value.isValidEmail){
+                                return 'invalid email';
+                              }
+                              return null ;
+                            } ,
                           ),
                           const SizedBox(
                             height: 10,
@@ -73,11 +83,16 @@ class _SignupScreenState extends State<SignupScreen> {
                               obscureText:appAuthProvider.obscureText ,
                               controller:appAuthProvider.passwordController ,
                               labelText: 'PASSWORD',
-                              prefixIcon:InkWell(
-                                  onTap:(){
-                                    appAuthProvider.toggleObscure();
-                                  } ,
-                                  child: const Icon(Icons.lock_open))
+                              suffixIcon: PasswordIcon(appAuthProvider: appAuthProvider),
+                              prefixIcon:const Icon(Icons.lock_open),
+                            validator:(value){
+                              if(value!.isEmpty){
+                                return 'password is required';
+                              }else if(!value.isValidPassword){
+                                return 'invalid password';
+                              }
+                              return null ;
+                            } ,
                           ),
                           const SizedBox(
                             height: 10,
@@ -90,9 +105,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     CustomDefaultButton(
                       text: 'SIGN UP',
-                      onTap: () {
-                        MagicRouter.navigateTo(SignInScreen());
-                      },),
+                      onTap:  ()async{
+                       await appAuthProvider.signUp();
+                      },
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
