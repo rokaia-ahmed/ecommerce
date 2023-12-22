@@ -1,7 +1,6 @@
-import 'package:ecommerce_app/core/router/router.dart';
-import 'package:ecommerce_app/screens/Auth/screens/sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecommerce_app/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,14 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(
       seconds: 5,
     ),() {
-      FirebaseAuth.instance.authStateChanges().listen((User? user) {
-        if (user == null) {
-          print('User is currently signed out!');
-        } else {
-          print('User is signed in!');
-        }
-      });
-      MagicRouter.navigateTo(SignInScreen());
+     Provider.of<AppAuthProvider>(context,listen: false).checkUser();
     },
     );
     super.initState();

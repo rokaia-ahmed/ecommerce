@@ -1,35 +1,25 @@
-import 'package:ecommerce_app/core/router/router.dart';
-import 'package:ecommerce_app/core/utilites/colors.dart';
 import 'package:ecommerce_app/core/utilites/validation.dart';
-import 'package:ecommerce_app/screens/Auth/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../core/widgets/custom_text_form_field.dart';
 import '../../../core/widgets/custom_text_headline.dart';
 import '../../../providers/auth_provider.dart';
-import '../../layout/screen/layout.dart';
 import '../widgets/password_Icon.dart';
-import 'forget_password.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignupScreen extends StatefulWidget {
+   const SignupScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
-
-class _SignInScreenState extends State<SignInScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   void initState() {
-    Provider.of<AppAuthProvider>(context,listen:false).init();
+    Provider.of<AppAuthProvider>(context,listen: false).init();
     super.initState();
   }
-  @override
-  void dispose() {
-    Provider.of<AppAuthProvider>(context,listen: false).providerDispose();
-    super.dispose();
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,16 +28,16 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Consumer<AppAuthProvider>(
-              builder: (context,appAuthProvider ,_){
+              builder:(context,appAuthProvider ,_){
                 return Form(
-                  key:appAuthProvider.formKey,
+                  key:appAuthProvider.formKey ,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
                         height: 20,
                       ),
-                      const CustomTextHeadLine(title: 'Log In'),
+                      const CustomTextHeadLine(title: 'Sign Up'),
                       const SizedBox(
                         height: 40,
                       ),
@@ -62,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           children: [
                             CustomTextFormField(
                               controller:appAuthProvider.emailController ,
-                              labelText: 'USERNAME / EMAIL',
+                              labelText: 'EMAIL',
                               prefixIcon:const Icon(Icons.email_outlined) ,
                               validator:(value){
                                 if(value!.isEmpty){
@@ -77,7 +67,15 @@ class _SignInScreenState extends State<SignInScreen> {
                               height: 10,
                             ),
                             CustomTextFormField(
-                              obscureText:appAuthProvider.obscureText ,
+                                controller:appAuthProvider.nameController ,
+                                labelText: 'USERNAME',
+                                prefixIcon:const Icon(Icons.person_outline_outlined)
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            CustomTextFormField(
+                                obscureText:appAuthProvider.obscureText ,
                                 controller:appAuthProvider.passwordController ,
                                 labelText: 'PASSWORD',
                                 suffixIcon: PasswordIcon(appAuthProvider: appAuthProvider),
@@ -97,62 +95,29 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ) ,
                       ),
-                      InkWell(
-                        onTap:(){
-                          MagicRouter.navigateTo(ForgetPasswordScreen());
-                        } ,
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Text('forget password?',
-                            textAlign: TextAlign.center,
-                            style:Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              fontSize:14,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryColor,
-                            ) ,
-                          ),
-                        ),
-                      ),
                       const SizedBox(
                         height: 20,
                       ),
                       CustomDefaultButton(
-                        text: 'LOG IN',
-                        onTap: ()async {
-                         await appAuthProvider.login();
+                        text: 'SIGN UP',
+                        onTap:  ()async{
+                         await appAuthProvider.signUp(context);
                         },
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Center(
-                        child: Text('Don’t have an account?',
-                          textAlign: TextAlign.center,
-                          style:Theme.of(context).textTheme.headlineSmall?.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ) ,
-                        ),
-                      ),
-                      Center(
-                        child: InkWell(
-                          onTap:(){
-                            MagicRouter.navigateTo(const SignupScreen());
-                          } ,
-                          child: Text(' create a new account.',
-                            textAlign: TextAlign.center,
-                            style:Theme.of(context).textTheme.headlineSmall?.copyWith(
-                              fontSize:14,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryColor,
-                            ) ,
-                          ),
-                        ),
+                      Text('By creating an account, you agree to our Terms of Service and Privacy Policy',
+                        textAlign: TextAlign.center,
+                        style:Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ) ,
                       ),
                     ],
                   ),
                 );
-              },
+              } ,
             ),
           ),
         ),

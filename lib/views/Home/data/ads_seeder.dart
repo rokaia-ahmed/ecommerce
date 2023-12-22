@@ -1,7 +1,7 @@
 import 'dart:convert';
-
-import 'package:ecommerce_app/screens/Home/model/ads_model.dart';
 import 'package:flutter/services.dart';
+
+import '../model/ads_model.dart';
 
 class AdsSeeder{
   static List<AdsModel> ads = [];
