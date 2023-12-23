@@ -1,5 +1,6 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_app/core/utilites/colors.dart';
 import 'package:ecommerce_app/providers/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +26,9 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
       builder: (BuildContext context,homeProvider, child) {
-        return
+        return (homeProvider.adsList.isNotEmpty)?
         CarouselSlider(
-          items: List.generate(homeProvider.adsList.length,
+          items: List.generate(color.length,
                   (index){
                 return Container(
                   height: 200,
@@ -35,6 +36,7 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                   padding:const EdgeInsets.all(10) ,
                   decoration: BoxDecoration(
                     color:color[index],
+                   // AppColors.lightGreyColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -82,6 +84,11 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastEaseInToSlowEaseOut,
           ),
+        ):
+        Container(
+          height:100 ,
+          width: double.infinity,
+          color:AppColors.textColor ,
         );
       },
     );

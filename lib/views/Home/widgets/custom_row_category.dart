@@ -1,43 +1,64 @@
+import 'package:ecommerce_app/core/utilites/colors.dart';
+import 'package:ecommerce_app/providers/home_provider.dart';
+import 'package:ecommerce_app/views/Home/model/categories_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CustomRowCategory extends StatelessWidget {
+class CustomRowCategory extends StatefulWidget {
   const CustomRowCategory({super.key});
 
   @override
+  State<CustomRowCategory> createState() => _CustomRowCategoryState();
+}
+
+class _CustomRowCategoryState extends State<CustomRowCategory> {
+  @override
+  void initState() {
+    Provider.of<HomeProvider>(context,listen: false).getCategories();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 90,
-      child: ListView.separated(
-          shrinkWrap: true,
-          scrollDirection:Axis.horizontal ,
-          itemBuilder: (context,index)=>
-          const BuildItem(),
-          separatorBuilder: (context,index)=>
-          const SizedBox(
-            width: 10,
-          ),
-          itemCount: 6),
+    return Consumer<HomeProvider>(
+      builder: ( context, HomeProvider homeProvider, child) {
+        return (homeProvider.categoriesList.isNotEmpty)?
+          SizedBox(
+          height: 90,
+          child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection:Axis.horizontal ,
+              itemBuilder: (context,index)=>
+               BuildItem(homeProvider.categoriesList[index]),
+              separatorBuilder: (context,index)=>
+              const SizedBox(
+                width: 10,),
+              itemCount: homeProvider.categoriesList.length),
+        ):const Center(child: CircularProgressIndicator(
+          color: AppColors.primaryColor,
+        ));
+      },
     );
   }
 }
 
 class BuildItem extends StatelessWidget {
-  const BuildItem({super.key});
-
+  const BuildItem(this.model, {super.key});
+ final CategoriesModel model ;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       children: [
-        CircleAvatar(
+         CircleAvatar(
           radius: 30,
-          child: Icon(Icons.add_business_outlined,
-            size: 35,
-          ),
+          backgroundImage:NetworkImage('${model.image}'),
+          onBackgroundImageError:(_,error){
+           debugPrint('error $error');
+          },
         ),
-        SizedBox(
+        const SizedBox(
           height: 2,
         ),
-        Text('Beauty'),
+        Text('${model.name}'),
       ],
     );
   }
