@@ -1,11 +1,11 @@
 class AdsModel {
-  int? id ;
+  String? id ;
   String? title ;
   String? imagePath ;
 
-  AdsModel.fromJson(Map<String,dynamic>json){
-    id = json['id'];
+  AdsModel.fromJson(Map<String,dynamic>json,String id){
+    id = id;
     title = json['title'];
-    imagePath = json['imagePath'];
+    imagePath = json['image'];
   }
 }

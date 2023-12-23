@@ -10,6 +10,6 @@ class AdsSeeder{
   String response = await rootBundle.loadString('assets/jsons/ads_seeder.json');
   var  data = await jsonDecode(response) ;
   ads = (data['ads'] as List).map((e) =>
-      AdsModel.fromJson(e)).toList();
+      AdsModel.fromJson(e,'')).toList();
   }
 }
