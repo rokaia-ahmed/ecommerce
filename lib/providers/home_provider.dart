@@ -1,10 +1,9 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/views/Home/model/categories_model.dart';
+import 'package:ecommerce_app/model/ads_model.dart';
+import 'package:ecommerce_app/model/categories_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-
-import '../views/Home/model/ads_model.dart';
 
 class HomeProvider extends ChangeNotifier{
   List<AdsModel> adsList =[];

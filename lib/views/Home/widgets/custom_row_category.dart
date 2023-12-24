@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/utilites/colors.dart';
+import 'package:ecommerce_app/model/categories_model.dart';
 import 'package:ecommerce_app/providers/home_provider.dart';
-import 'package:ecommerce_app/views/Home/model/categories_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

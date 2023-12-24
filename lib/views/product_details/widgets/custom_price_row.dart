@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../core/utilites/colors.dart';
 
 class CustomPriceRow extends StatelessWidget {
-  const CustomPriceRow({super.key});
+  const CustomPriceRow({super.key, this.rating, this.price});
+  final double? rating;
+  final double? price;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('\$49.99',
+        Text('\$ $price',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontWeight: FontWeight.bold
           ),
@@ -32,7 +34,7 @@ class CustomPriceRow extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              Text('4.9',
+              Text('$rating',
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   fontSize: 12,
                   fontWeight: FontWeight.bold,

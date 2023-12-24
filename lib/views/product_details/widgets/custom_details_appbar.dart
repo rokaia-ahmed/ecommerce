@@ -4,10 +4,11 @@ import 'package:line_icons/line_icons.dart';
 import '../../../core/utilites/colors.dart';
 
 class CustomDetailsAppbar{
-  static PreferredSize  get(context) => PreferredSize(
+  static PreferredSize  get(context,{required String productName}) =>
+      PreferredSize(
     preferredSize: const Size.fromHeight(50),
     child: AppBar(
-      title: Text('Faux Sued Ankle Boots',
+      title: Text(productName,
         style: Theme.of(context).textTheme.bodyMedium,),
       centerTitle: true,
       leading: IconButton(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/providers/auth_provider.dart';
 import 'package:ecommerce_app/providers/home_provider.dart';
+import 'package:ecommerce_app/providers/products_provider.dart';
 import 'package:ecommerce_app/views/splash/screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AppAuthProvider>(create:(_) =>AppAuthProvider(),),
         ChangeNotifierProvider<HomeProvider>(create:(_) =>HomeProvider(),),
+        Provider<ProductProvider>(create: (_)=>ProductProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

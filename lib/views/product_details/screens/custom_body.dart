@@ -1,11 +1,12 @@
+import 'package:ecommerce_app/model/products_model.dart';
 import 'package:flutter/material.dart';
 import '../widgets/custom_colors_row.dart';
 import '../widgets/custom_price_row.dart';
 import '../widgets/custom_size_row.dart';
 
 class CustomBody extends StatelessWidget {
-  const CustomBody({super.key});
-
+  const CustomBody({super.key, required this.model});
+ final ProductsModel model ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -13,16 +14,22 @@ class CustomBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomPriceRow(),
+           CustomPriceRow(
+            price:model.price ,
+             rating:model.rating,
+          ),
           const SizedBox(
             height: 10,
           ),
           Center(
             child: Image.network(
-              'https://th.bing.com/th/id/R.72ad0e6db064296b257a0167a22eb277?rik=8szL1VSDVgA86w&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fhigh-heel-png-hd-red-heel-clipart-high-heel-shoes-png-hd-2500.png&ehk=IGpxLH7Dcl%2fUR8EGN%2fuIrF%2fEEIEFvS5vEcai%2bUf2bvM%3d&risl=&pid=ImgRaw&r=0',
+              model.image ??'',
               height: 220,
               width: 220,
               fit: BoxFit.contain,
+              errorBuilder:(_,obj,error) {
+                return const SizedBox();
+              },
             ),
           ),
           const SizedBox(

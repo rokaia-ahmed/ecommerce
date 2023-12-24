@@ -1,6 +1,5 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_app/core/utilites/colors.dart';
 import 'package:ecommerce_app/providers/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -86,9 +85,12 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
           ),
         ):
         Container(
-          height:100 ,
+          height:200 ,
           width: double.infinity,
-          color:AppColors.textColor ,
+          decoration: BoxDecoration(
+            color:Colors.white30,
+            borderRadius: BorderRadius.circular(10),
+          ),
         );
       },
     );
