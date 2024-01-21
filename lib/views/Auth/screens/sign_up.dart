@@ -84,7 +84,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 if(value!.isEmpty){
                                   return 'password is required';
                                 }else if(!value.isValidPassword){
-                                  return 'invalid password';
+                                  return 'password must have at least letter and special char';
                                 }
                                 return null ;
                               } ,

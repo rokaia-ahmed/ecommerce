@@ -25,11 +25,6 @@ class _SignInScreenState extends State<SignInScreen> {
     super.initState();
   }
   @override
-  void deactivate() {
-    Provider.of<AppAuthProvider>(context,listen: false).providerDispose();
-    super.deactivate();
-  }
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body:SingleChildScrollView(
@@ -85,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 if(value!.isEmpty){
                                   return 'password is required';
                                 }else if(!value.isValidPassword){
-                                  return 'invalid password';
+                                  return 'password must have at least letter and special char';
                                 }
                                 return null ;
                               } ,
@@ -98,7 +93,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       InkWell(
                         onTap:(){
-                          MagicRouter.navigateTo(ForgetPasswordScreen());
+                         /* appAuthProvider.forgetPassword(
+                              appAuthProvider.emailController.text);*/
+                         MagicRouter.navigateTo(ForgetPasswordScreen());
                         } ,
                         child: Align(
                           alignment: Alignment.topRight,

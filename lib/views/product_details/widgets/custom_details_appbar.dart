@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/core/router/router.dart';
+import 'package:ecommerce_app/views/cart/screens/cart_screen.dart';
+import 'package:ecommerce_app/views/layout/screen/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import '../../../core/utilites/colors.dart';
@@ -21,7 +23,11 @@ class CustomDetailsAppbar{
       ),
       actions: [
         IconButton(
-          onPressed:(){},
+          onPressed:(){
+            MagicRouter.navigateTo(LayoutScreen(
+              currentIndex: 2,
+            ));
+          },
           icon: const Stack(
             alignment: Alignment.bottomLeft,
             children: [

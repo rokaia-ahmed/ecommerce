@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../core/app_helper/custom_toast.dart';
 import '../core/router/router.dart';
+import '../core/srevices/firebase_notification_service.dart';
 import '../views/Auth/screens/sign_in.dart';
 import '../views/layout/screen/layout.dart';
 
@@ -19,11 +20,11 @@ class AppAuthProvider extends ChangeNotifier{
      passwordController = TextEditingController();
    }
 
-  void providerDispose(){
+ /* void providerDispose(){
     emailController.dispose();
     nameController.dispose();
     passwordController.dispose();
-  }
+  }*/
 
  void toggleObscure(){
    obscureText = !obscureText ;
@@ -35,7 +36,9 @@ class AppAuthProvider extends ChangeNotifier{
       if (user == null) {
         MagicRouter.navigateAndPReplacement((const SignInScreen()));
       } else {
-        MagicRouter.navigateAndPReplacement((const LayoutScreen()));
+        PushNotificationService.checkNotificationOnKilledApp();
+        PushNotificationService.init();
+        MagicRouter.navigateAndPReplacement(( LayoutScreen()));
       }
     });
   }
@@ -86,7 +89,7 @@ class AppAuthProvider extends ChangeNotifier{
         MagicRouter.pop();
         showToast(text:'you login successfully',
             state:ToastStates.success);
-        MagicRouter.navigateAndPReplacement(const LayoutScreen());
+        MagicRouter.navigateAndPReplacement( LayoutScreen());
       }
       }on FirebaseAuthException catch(e){
         if (e.code == 'user-not-found') {
@@ -123,5 +126,21 @@ class AppAuthProvider extends ChangeNotifier{
            state:ToastStates.error);
        debugPrint(e.toString());
      }
+  }
+
+  void forgetPassword()async{
+    if(formKey.currentState?.validate()??false) {
+      try {
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(
+            email: emailController.text);
+        showToast(text:'check yor email to rest password' ,
+            state: ToastStates.success);
+        MagicRouter.navigateTo(const SignInScreen());
+      } catch (e) {
+        showToast(text:e.toString() , state: ToastStates.error);
+        print('>>>>${e}');
+      }
+    }
   }
 }

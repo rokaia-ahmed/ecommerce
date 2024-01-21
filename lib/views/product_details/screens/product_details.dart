@@ -12,8 +12,8 @@ class ProductDetails extends StatelessWidget {
     return Scaffold(
       appBar: CustomDetailsAppbar.get(context,
       productName: model.name ??"no name"),
-      body:  CustomBody(model: model),
-      bottomSheet: const CustomBottomSheet(),
+      body:  CustomBody(model: model,),
+      bottomSheet:  CustomBottomSheet(model: model,),
     );
   }
 }

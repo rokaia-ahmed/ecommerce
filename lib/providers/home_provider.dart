@@ -17,7 +17,7 @@ class HomeProvider extends ChangeNotifier{
 
         }
         notifyListeners();
-      debugPrint(adsList[0].title);
+     // debugPrint(adsList[0].title);
     }catch(e){
       debugPrint('===================$e');
     }
@@ -31,7 +31,7 @@ class HomeProvider extends ChangeNotifier{
         categoriesList.add(CategoriesModel.fromJson(element.data(),element.id));
       }
       notifyListeners();
-      debugPrint(categoriesList[0].name);
+    //  debugPrint(categoriesList[0].name);
     }catch(e){
       debugPrint('===================$e');
     }

@@ -5,8 +5,9 @@ import '../widgets/custom_price_row.dart';
 import '../widgets/custom_size_row.dart';
 
 class CustomBody extends StatelessWidget {
-  const CustomBody({super.key, required this.model});
+  const CustomBody({super.key, required this.model,});
  final ProductsModel model ;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,7 +40,8 @@ class CustomBody extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          CustomColorsRow(),
+          if(model.variance!['colors'] !=null)
+          CustomColorsRow(colors:List.from(model.variance!['colors']!)),
           const SizedBox(
             height: 15,
           ),
@@ -47,7 +49,10 @@ class CustomBody extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const CustomSizeRow(),
+           if(model.variance!['size'] !=null)
+           CustomSizeRow(
+             size: List.from(model.variance!['size']!),
+           ),
         ],
       ),
     );

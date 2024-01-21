@@ -9,9 +9,10 @@ class ProductsModel {
   String? material ;
   String? brand ;
   String? categoryId ;
+  Map<String, List<dynamic>>? variance;
 
-  ProductsModel.fromJson(Map<String,dynamic>json,String id){
-    id = id;
+  ProductsModel.fromJson(Map<String,dynamic>json,
+      String this.id){
     name = json['name'];
     image = json['image'];
     price = json['price'];
@@ -21,5 +22,7 @@ class ProductsModel {
     brand = json['brand'];
     categoryId = json['category-id'];
     material = json['material'];
+    variance = Map<String, List<dynamic>>.from(json['variance']);
   }
 }
+
