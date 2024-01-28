@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/router/router.dart';
 import 'package:ecommerce_app/model/cart_model.dart';
 import 'package:ecommerce_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../../../core/utilites/colors.dart';
 import '../../../core/widgets/custom_default_button.dart';
 import '../../../model/products_model.dart';
+import '../../cart/screens/cart_screen.dart';
 import 'custom_colors_row.dart';
 import 'custom_size_row.dart';
 
@@ -50,8 +52,9 @@ class CustomBottomSheet extends StatelessWidget {
                   size: CustomSizeRow.selectedSize??4.5 ,
                   quantity: 1,
                   color: CustomColorsRow.color ,
-                )
-                );}
+                ),
+                );
+              }
             ),
           ),
         ],

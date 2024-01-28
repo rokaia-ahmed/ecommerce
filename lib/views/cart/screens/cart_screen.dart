@@ -26,7 +26,10 @@ class _CartScreenState extends State<CartScreen> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomTextHeadLine(title: 'Cart',),
+            const Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: CustomTextHeadLine(title: 'Cart',),
+            ),
             const SizedBox(
               height: 10,
             ),

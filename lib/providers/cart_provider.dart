@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ecommerce_app/core/app_helper/custom_alert.dart';
 import 'package:ecommerce_app/core/app_helper/custom_toast.dart';
-import 'package:ecommerce_app/core/router/router.dart';
 import 'package:ecommerce_app/model/cart_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +35,6 @@ class CartProvider extends ChangeNotifier{
 
   void addProductToCart(BuildContext context,CartModel cartModel)async{
     try{
-      customAlert(context);
         var data=  await FirebaseFirestore.instance.
         collection('carts')
             .doc(FirebaseAuth.instance.currentUser?.email).get();
@@ -54,7 +51,6 @@ class CartProvider extends ChangeNotifier{
             result.then((value){
               showToast(text: 'item updated successfully',
                   state: ToastStates.success);
-              MagicRouter.pop();
             });
           }
           else{
@@ -66,7 +62,6 @@ class CartProvider extends ChangeNotifier{
               showToast(text: 'item added successfully',
                   state: ToastStates.success);
               print('item add success');
-              MagicRouter.pop();
             });
           }
         }
@@ -78,11 +73,9 @@ class CartProvider extends ChangeNotifier{
         result.then((value){
           showToast(text: 'item added successfully',
               state: ToastStates.success);
-          MagicRouter.pop();
         });
       }
     }catch(e){
-      MagicRouter.pop();
       debugPrint('error when add item to cart ===============$e');
     }
 }
